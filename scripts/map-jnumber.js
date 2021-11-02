@@ -3,13 +3,16 @@
  * Performs functions on a J-Number.
  *
  * By        : Leomar Duran <https://github.com/lduran2>
- * When      : 2021-11-01t21:57
+ * When      : 2021-11-01t22:01
  * Where     : Community College of Philadelphia
  * For       : CIS 114/JavaScript I
- * Version   : 1.2.0
+ * Version   : 1.3.0
  * Canonical : https://github.com/lduran2/cis114-javascript-projects/blob/master/scripts/map-jnumber.js
  *
  * CHANGELOG :
+ *     v1.3.0 - 2021-11-01t22:01
+ *         getting check-sum from the user
+ *
  *     v1.2.0 - 2021-11-01t21:57
  *         implemented the unique ordered digit functions
  *
@@ -45,8 +48,10 @@ function main() {
 	console.log('Done.');
 } /* end function main() */
 
-/* the length of UNIQUE_DIGITS is 4 for the given JNUMBER,
- * so make f[0..3] functions */
+/* ********************************************************************
+ * the length of UNIQUE_DIGITS is 4 for the given JNUMBER,
+ * so make f[0..3] functions
+ */
 
 /**
  * function for first unique digit
@@ -105,9 +110,15 @@ function f(index, input) {
 	return result;
 } /* end function f(index, input) */
 
+/* ********************************************************************/
+
+/**
+ * Asks the user for a check-sum and returns it.
+ * @return the check-sum from the user
+ */
 function getUserInput() {
-	return 12312;
-}
+	return Number.parseInt(prompt('Please enter the check-sum.'), 10);
+} /* end function getUserInput() */
 
 /**
  * Reduces a number parsed from a string by adding all digits.

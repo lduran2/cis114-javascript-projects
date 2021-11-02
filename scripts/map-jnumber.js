@@ -42,11 +42,29 @@ function main() {
 	const RESULT8 = f3(RESULT7);
 
 	/* print the result */
-	console.log(`You provided the number ${USER_PROVIDED_VALUE}. Your result is ${RESULT8}.`);
+	alertResult(RESULT8, USER_PROVIDED_VALUE);
 
 	/* finished */
 	console.log('Done.');
 } /* end function main() */
+
+/**
+ * Asks the user for a check-sum and returns it.
+ * @return the check-sum from the user
+ */
+function getUserInput() {
+	return Number.parseInt(window.prompt('Please enter the check-sum.'), 10);
+} /* end function getUserInput() */
+
+/**
+ * Alerts the final result from the function operations and the user
+ * provided value.
+ * @param finalResult : Number = the final value from the function calls
+ * @param userProvidedValue : Number = orignally input by the user
+ */
+function alertResult(finalResult, userProvidedValue) {
+	window.alert(`You provided the number ${userProvidedValue}. Your result is ${finalResult}.`);
+} /* end function alertResult(finalResult, userProvidedValue) */
 
 /* ********************************************************************
  * the length of UNIQUE_DIGITS is 4 for the given JNUMBER,
@@ -111,14 +129,6 @@ function f(index, input) {
 } /* end function f(index, input) */
 
 /* ********************************************************************/
-
-/**
- * Asks the user for a check-sum and returns it.
- * @return the check-sum from the user
- */
-function getUserInput() {
-	return Number.parseInt(prompt('Please enter the check-sum.'), 10);
-} /* end function getUserInput() */
 
 /**
  * Reduces a number parsed from a string by adding all digits.

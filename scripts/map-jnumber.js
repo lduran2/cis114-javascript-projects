@@ -3,13 +3,16 @@
  * Performs functions on a J-Number.
  *
  * By        : Leomar Duran <https://github.com/lduran2>
- * When      : 2021-11-01t22:01
+ * When      : 2021-11-01t22:10
  * Where     : Community College of Philadelphia
  * For       : CIS 114/JavaScript I
- * Version   : 1.3.0
+ * Version   : 1.4.0
  * Canonical : https://github.com/lduran2/cis114-javascript-projects/blob/master/scripts/map-jnumber.js
  *
  * CHANGELOG :
+ *     v1.4.0 - 2021-11-01t22:10
+ *         implemented the alert function
+ *
  *     v1.3.0 - 2021-11-01t22:01
  *         getting check-sum from the user
  *

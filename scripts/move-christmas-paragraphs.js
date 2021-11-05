@@ -3,13 +3,17 @@
  * Performs various tasks on the "A Christmas Carol" text.
  *
  * By        : Leomar Duran <https://github.com/lduran2>
- * When      : 2021-11-04t23:12
+ * When      : 2021-11-05t00:04
  * Where     : Community College of Philadelphia
  * For       : CIS 114/JavaScript I
- * Version   : 1.1.1
+ * Version   : 1.2.0
  * Canonical : https://github.com/lduran2/cis114-javascript-projects/blob/master/scripts/map-jnumber.js
  *
  * CHANGELOG :
+ *     v1.2.0 - 2021-11-05t00:04
+ *         switched delays to alerts
+ *         implemented updating a paragraph
+ *
  *     v1.1.1 - 2021-11-04t23:12
  *         added delay to task #2
  *
@@ -33,63 +37,85 @@
 'use strict';
 
 function main() {
-	const N_PARA_EXPECTED = 2;	/* #(paragraphs expected) */
-	const TASK_DELAY = 500;	/* [ms] to wait between tasks */
+	const N_PARA_EXPECTED = 3;	/* #(paragraphs expected) */
 
 	/* get and check the content division */
 	const CONTENT = document.querySelector('#content');
 	if (!CONTENT) return;
 
+	/* note: continue to use CONTENT.children directly
+	 * because if it's stored in a variable, the variable won't update
+	 */
+
 	/* get and check the paragraphs */
-	const PARAGRAPHS = CONTENT.children;
-	if (!PARAGRAPHS || (PARAGRAPHS.length < N_PARA_EXPECTED)) return;
+	if (!CONTENT.children || (CONTENT.children.length < N_PARA_EXPECTED)) {
+		return;
+	} /* end if (!CONTENT.children
+		|| (CONTENT.children.length < N_PARA_EXPECTED))
+	   */
 
 	/* print the content and paragraphs to console */
 	console.log(CONTENT);
-	console.log(PARAGRAPHS);
-
-	/* wait for the user */
-	window.alert('The original text. Continue . . .');
+	console.log(CONTENT.children);
 
 	/* add a new paragraph between first 2 */
-	insertParagraph(PARAGRAPHS[1]);
+	window.alert('Adding a new paragraph between the first 2 paragraphs. Continue . . .');
+	insertParagraph(CONTENT.children[1]);
 
 	/* remove the first paragraph */
-	console.log(`Removing first paragraph in ${TASK_DELAY} ms . . .`);
-	/* note that CONTENT.firstChild may be a text node,
+	window.alert('Removing first paragraph. Continue . . .');
+	/* note: CONTENT.firstChild may be a text node,
 	 * whereas CONTENT.children only contains element nodes */
-	window.setTimeout(removeParagraph, TASK_DELAY, PARAGRAPHS[0]);
+	removeParagraph(CONTENT.children[0]);
+
+	/* update the text of the third paragraph */
+	window.alert('Updating third paragraph. Continue . . .');
+	updateParagraph(CONTENT.children[2]);
 
 	console.log('Done.');
 } /* end function main() */
 
 /**
- * Inserts a new paragraph before the given paragraph.
+ * Inserts a new paragraph before the given paragraph (Task #1).
  * @param paragraph : HTMLParagraphElement = to insert before
  * @return the new paragraph inserted
  */
 function insertParagraph(paragraph) {
-	const NEW_P1_TEXT = ('To his great astonishment, the heavy bell went '
+	const NEW_P_TEXT = ('To his great astonishment, the heavy bell went '
 		+ 'on from six to seven, and from seven to eight, and regularly up '
 		+ 'to twelve; then stopped. Twelve! It was past two when he went '
 		+ 'to bed. The clock was wrong. An icicle must have got into the '
-		+ 'works. Twelve!');	/* text for new paragraph #2 */
+		+ 'works. Twelve!');	/* text for new paragraph */
 
 	/* create the new paragraph */
-	const NEW_P1 = createTextElement('p', NEW_P1_TEXT);
+	const NEW_P = createTextElement('p', NEW_P_TEXT);
 
 	/* insert it before the given paragraph */
-	return paragraph.parentNode.insertBefore(NEW_P1, paragraph);
+	return paragraph.parentNode.insertBefore(NEW_P, paragraph);
 } /* end function insertParagraph(paragraphs) */
 
 /**
- * Removes the given paragraphs.
+ * Removes the given paragraph (Task #2).
  * @param paragraph : HTMLParagraphElement = to remove
  * @return the paragraph removed
  */
 function removeParagraph(paragraph) {
 	return paragraph.parentNode.removeChild(paragraph);
 } /* end function removeParagraph(paragraph) */
+
+/**
+ * Changes the text of the given paragraph (Task #3).
+ * @param paragraph whose text content to change
+ */
+function updateParagraph(paragraph) {
+	const NEW_TEXT = ('Scrooge went to bed again, and thought, and '
+		+ 'thought, and thought it over and over, and could make nothing '
+		+ 'of it. The more he thought, the more perplexed he was; and, the '
+		+ 'more he endeavoured not to think, the more he thought.');
+		/* the new text */
+	/* set the paragraph's text */
+	paragraph.textContent = NEW_TEXT;
+}
 
 /**
  * Create an element with given textContent.

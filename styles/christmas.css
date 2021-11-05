@@ -1,4 +1,22 @@
-@charset "utf-8"; 
+@charset "utf-8";
+/**
+ * /styles/christmas.css
+ * Styles used for "A Christmas Carol" by Charles Dickens.
+ *
+ * By        : Leomar Duran <https://github.com/lduran2>
+ * When      : 2021-11-04t20:40
+ * Where     : Community College of Philadelphia
+ * For       : CIS 114/JavaScript I
+ * Version   : 1.0.1
+ * Canonical : https://github.com/lduran2/cis114-javascript-projects/blob/master/styles/christmas.css
+ *
+ * CHANGELOG :
+ *     v1.0.1 - 2021-11-04t20:40
+ *         set stylesheet charset
+ *
+ *     v1.0.0 - 2021-11-04t20:38
+ *         styled quotes
+ */
 
 q:lang(en) {
 	quotes: "‘" "’";

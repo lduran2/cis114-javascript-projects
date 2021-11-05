@@ -3,13 +3,18 @@
  * Performs various tasks on the "A Christmas Carol" text.
  *
  * By        : Leomar Duran <https://github.com/lduran2>
- * When      : 2021-11-04t22:29
+ * When      : 2021-11-04t23:06
  * Where     : Community College of Philadelphia
  * For       : CIS 114/JavaScript I
- * Version   : 1.0.2
+ * Version   : 1.1.0
  * Canonical : https://github.com/lduran2/cis114-javascript-projects/blob/master/scripts/map-jnumber.js
  *
  * CHANGELOG :
+ *     v1.1.0 - 2021-11-04t23:06
+ *         passing the elements to functions,
+ *             rather than their collections
+ *         implemented removing the element
+ *
  *     v1.0.3 - 2021-11-04t22:36
  *         alert before task
  *
@@ -26,6 +31,7 @@
 
 function main() {
 	const N_PARA_EXPECTED = 2;	/* #(paragraphs expected) */
+	const TASK_DELAY = 1000;	/* [ms] to wait between tasks */
 
 	/* get and check the content division */
 	const CONTENT = document.querySelector('#content');
@@ -35,34 +41,51 @@ function main() {
 	const PARAGRAPHS = CONTENT.children;
 	if (!PARAGRAPHS || PARAGRAPHS.length < N_PARA_EXPECTED) return;
 
-	/* print the paragraphs to console */
+	/* print the content and paragraphs to console */
+	console.log(CONTENT);
 	console.log(PARAGRAPHS);
 
 	/* wait for the user */
 	window.alert('The original text. Continue . . .');
 
 	/* add a new paragraph between first 2 */
-	insertParagraph(PARAGRAPHS);
+	insertParagraph(PARAGRAPHS[1]);
+
+	/* remove the first paragraph */
+	/* note that CONTENT.firstChild may be a text node,
+	 * whereas CONTENT.children only contains element nodes */
+	removeParagraph(PARAGRAPHS[0]);
+
+	console.log('Done.');
 } /* end function main() */
 
 /**
- * Inserts a new paragraph before paragraph #2.
- * @param paragraph : HTMLCollection = collection from which to pick
- *     paragraph #2
+ * Inserts a new paragraph before the given paragraph.
+ * @param paragraph : HTMLParagraphElement = to insert before
+ * @return the new paragraph inserted
  */
-function insertParagraph(paragraphs) {
+function insertParagraph(paragraph) {
 	const NEW_P1_TEXT = ('To his great astonishment, the heavy bell went '
 		+ 'on from six to seven, and from seven to eight, and regularly up '
 		+ 'to twelve; then stopped. Twelve! It was past two when he went '
 		+ 'to bed. The clock was wrong. An icicle must have got into the '
 		+ 'works. Twelve!');	/* text for new paragraph #2 */
 
-	/* create the paragraph */
+	/* create the new paragraph */
 	const NEW_P1 = createTextElement('p', NEW_P1_TEXT);
 
-	/* insert it between first 2 paragraphs */
-	paragraphs[1].parentNode.insertBefore(NEW_P1, paragraphs[1]);
-}
+	/* insert it before the given paragraph */
+	return paragraph.parentNode.insertBefore(NEW_P1, paragraph);
+} /* end function insertParagraph(paragraphs) */
+
+/**
+ * Removes the given paragraphs.
+ * @param paragraph : HTMLParagraphElement = to remove
+ * @return the paragraph removed
+ */
+function removeParagraph(paragraph) {
+	return paragraph.parentNode.removeChild(paragraph);
+} /* end function removeParagraph(paragraph) */
 
 /**
  * Create an element with given textContent.

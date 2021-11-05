@@ -7,7 +7,7 @@
  * Where     : Community College of Philadelphia
  * For       : CIS 114/JavaScript I
  * Version   : 1.4.0
- * Canonical : https://github.com/lduran2/cis114-javascript-projects/blob/master/scripts/map-jnumber.js
+ * Canonical : https://github.com/lduran2/cis114-javascript-projects/blob/master/scripts/move-christmas-paragraphs.js
  *
  * CHANGELOG :
  *     v1.4.0 - 2021-11-05t01:17

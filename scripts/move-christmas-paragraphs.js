@@ -3,13 +3,16 @@
  * Performs various tasks on the "A Christmas Carol" text.
  *
  * By        : Leomar Duran <https://github.com/lduran2>
- * When      : 2021-11-04t23:06
+ * When      : 2021-11-04t23:12
  * Where     : Community College of Philadelphia
  * For       : CIS 114/JavaScript I
- * Version   : 1.1.0
+ * Version   : 1.1.1
  * Canonical : https://github.com/lduran2/cis114-javascript-projects/blob/master/scripts/map-jnumber.js
  *
  * CHANGELOG :
+ *     v1.1.1 - 2021-11-04t23:12
+ *         added delay to task #2
+ *
  *     v1.1.0 - 2021-11-04t23:06
  *         passing the elements to functions,
  *             rather than their collections
@@ -31,7 +34,7 @@
 
 function main() {
 	const N_PARA_EXPECTED = 2;	/* #(paragraphs expected) */
-	const TASK_DELAY = 1000;	/* [ms] to wait between tasks */
+	const TASK_DELAY = 500;	/* [ms] to wait between tasks */
 
 	/* get and check the content division */
 	const CONTENT = document.querySelector('#content');
@@ -39,7 +42,7 @@ function main() {
 
 	/* get and check the paragraphs */
 	const PARAGRAPHS = CONTENT.children;
-	if (!PARAGRAPHS || PARAGRAPHS.length < N_PARA_EXPECTED) return;
+	if (!PARAGRAPHS || (PARAGRAPHS.length < N_PARA_EXPECTED)) return;
 
 	/* print the content and paragraphs to console */
 	console.log(CONTENT);
@@ -52,9 +55,10 @@ function main() {
 	insertParagraph(PARAGRAPHS[1]);
 
 	/* remove the first paragraph */
+	console.log(`Removing first paragraph in ${TASK_DELAY} ms . . .`);
 	/* note that CONTENT.firstChild may be a text node,
 	 * whereas CONTENT.children only contains element nodes */
-	removeParagraph(PARAGRAPHS[0]);
+	window.setTimeout(removeParagraph, TASK_DELAY, PARAGRAPHS[0]);
 
 	console.log('Done.');
 } /* end function main() */

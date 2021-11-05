@@ -3,13 +3,16 @@
  * Performs various tasks on the "A Christmas Carol" text.
  *
  * By        : Leomar Duran <https://github.com/lduran2>
- * When      : 2021-11-05t00:50
+ * When      : 2021-11-05t01:17
  * Where     : Community College of Philadelphia
  * For       : CIS 114/JavaScript I
- * Version   : 1.3.0
+ * Version   : 1.4.0
  * Canonical : https://github.com/lduran2/cis114-javascript-projects/blob/master/scripts/map-jnumber.js
  *
  * CHANGELOG :
+ *     v1.4.0 - 2021-11-05t01:17
+ *         adding a class to the content division
+ *
  *     v1.3.0 - 2021-11-05t00:50
  *         appending a new paragraph to the end of the content
  *
@@ -41,6 +44,7 @@
 
 function main() {
 	const N_PARA_EXPECTED = 3;	/* #(paragraphs expected) */
+	const bookClass = 'christmas-book';	/* the class to add to CONTENT */
 
 	/* get and check the content division */
 	const CONTENT = document.querySelector('#content');
@@ -78,6 +82,10 @@ function main() {
 	/* append a new paragraph to the end of content */
 	window.alert('Appending a new paragraph. Continue . . .');
 	appendParagraphTo(CONTENT);
+
+	/* add a class to the content division */
+	window.alert('Adding a class to the content division. Continue . . .');
+	CONTENT.classList.add(bookClass);
 
 	console.log('Done.');
 } /* end function main() */

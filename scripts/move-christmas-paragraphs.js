@@ -3,13 +3,16 @@
  * Performs various tasks on the "A Christmas Carol" text.
  *
  * By        : Leomar Duran <https://github.com/lduran2>
- * When      : 2021-11-05t00:04
+ * When      : 2021-11-05t00:50
  * Where     : Community College of Philadelphia
  * For       : CIS 114/JavaScript I
- * Version   : 1.2.0
+ * Version   : 1.3.0
  * Canonical : https://github.com/lduran2/cis114-javascript-projects/blob/master/scripts/map-jnumber.js
  *
  * CHANGELOG :
+ *     v1.3.0 - 2021-11-05t00:50
+ *         appending a new paragraph to the end of the content
+ *
  *     v1.2.0 - 2021-11-05t00:04
  *         switched delays to alerts
  *         implemented updating a paragraph
@@ -72,6 +75,10 @@ function main() {
 	window.alert('Updating third paragraph. Continue . . .');
 	updateParagraph(CONTENT.children[2]);
 
+	/* append a new paragraph to the end of content */
+	window.alert('Appending a new paragraph. Continue . . .');
+	appendParagraphTo(CONTENT);
+
 	console.log('Done.');
 } /* end function main() */
 
@@ -105,7 +112,7 @@ function removeParagraph(paragraph) {
 
 /**
  * Changes the text of the given paragraph (Task #3).
- * @param paragraph whose text content to change
+ * @param paragraph : HTMLParagraphElement = whose text content to change
  */
 function updateParagraph(paragraph) {
 	const NEW_TEXT = ('Scrooge went to bed again, and thought, and '
@@ -115,7 +122,29 @@ function updateParagraph(paragraph) {
 		/* the new text */
 	/* set the paragraph's text */
 	paragraph.textContent = NEW_TEXT;
-}
+} /* end function updateParagraph(paragraph) */
+
+/**
+ * Appends a new paragraph as the last element of the given division.
+ * @param div : HTMLDivElement = to which to append
+ */
+function appendParagraphTo(div) {
+	const NEW_P_TEXT = ('Marley’s Ghost bothered him exceedingly. Every '
+		+ 'time he resolved within himself, after mature enquiry, that it '
+		+ 'was all a dream, his mind flew back again, like a strong spring '
+		+ 'released, to its first position, and presented the same problem '
+		+ 'to be worked all through, ');
+		/* the first of the new paragraph text */
+	const NEW_Q_TEXT = 'Was it a dream or not?'; /* the quote text */
+
+	const NEW_P = createTextElement('p', NEW_P_TEXT);	/* new paragraph */
+	const NEW_Q = createTextElement('q', NEW_Q_TEXT);	/* new quotation */
+
+	/* append the quotation to the paragraph */
+	NEW_P.append(NEW_Q);
+	/* append the paragraph to division */
+	div.append(NEW_P);
+} /* end function appendParagraphTo(div) */
 
 /**
  * Create an element with given textContent.

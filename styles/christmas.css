@@ -4,13 +4,16 @@
  * Styles used for "A Christmas Carol" by Charles Dickens.
  *
  * By        : Leomar Duran <https://github.com/lduran2>
- * When      : 2021-11-04t20:40
+ * When      : 2021-11-05t01:00
  * Where     : Community College of Philadelphia
  * For       : CIS 114/JavaScript I
- * Version   : 1.0.1
+ * Version   : 1.1.0
  * Canonical : https://github.com/lduran2/cis114-javascript-projects/blob/master/styles/christmas.css
  *
  * CHANGELOG :
+ *     v1.1.0 - 2021-11-05t01:00
+ *         added the christmas book style to all divs
+ *
  *     v1.0.1 - 2021-11-04t20:40
  *         set stylesheet charset
  *
@@ -28,4 +31,20 @@ q::before {
 
 q::after {
 	content: close-quote;
+}
+
+/*
+ * foreground from https://www.amazon.com/Christmas-Carol-Calla-Editions/dp/1606601210/
+ * background from https://www.amazon.com/A-Christmas-Carol/dp/024141119X/
+ */
+div {
+	line-height: 1.75em;
+	color: rgb(255, 237, 60);
+	background-color: rgb(174, 0, 4);
+	border: 4px dotted;
+	padding: 0 2em;
+}
+
+div p {
+	margin: 2em 0;
 }
